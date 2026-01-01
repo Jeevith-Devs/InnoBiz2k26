@@ -7,7 +7,7 @@ import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { motion } from 'framer-motion';
 import { ChevronDown, Zap } from 'lucide-react';
-import logoSrc from '../logo.png';
+import faviconSrc from '../favicon.svg';
 
 const Hero: React.FC = () => {
   const logoRef = useRef<HTMLHeadingElement>(null);
@@ -61,7 +61,7 @@ const Hero: React.FC = () => {
         <div className="w-full flex flex-col items-center justify-center">
           <div className="flex flex-col items-center w-full max-w-[40rem]">
             <h1 ref={logoRef} className="font-heading font-black text-5xl md:text-7xl lg:text-8xl tracking-tighter mb-0 relative z-10 drop-shadow-2xl flex items-center justify-center">
-              <img src={logoSrc} alt="InnoBiz 2K26" className="block w-56 sm:w-72 md:w-80 lg:w-96 h-auto mx-auto" />
+              <img src={faviconSrc} alt="InnoBiz 2K26" className="block w-56 sm:w-72 md:w-80 lg:w-96 h-auto mx-auto" />
               <span className="sr-only">InnoBiz 2K26</span>
             </h1>
 
