@@ -44,33 +44,36 @@ const Hero: React.FC = () => {
         />
       </div>
 
-      <div className="z-10 max-w-6xl mx-auto relative flex flex-col items-center">
+      <div className="z-10 max-w-4xl mx-auto relative flex flex-col items-center text-center gap-6 md:gap-8 px-4">
         <motion.div 
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.8 }}
-          className="mb-8 inline-flex items-center gap-3 bg-white/10 backdrop-blur-md px-6 py-2 rounded-full border border-white/20 shadow-lg"
+          className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md px-6 py-2 rounded-full border border-white/20 shadow-lg mt-2"
         >
           <span className="w-2.5 h-2.5 rounded-full bg-yellow-400 animate-pulse shadow-[0_0_10px_#facc15]" />
           <span className="text-sm md:text-base font-bold tracking-widest uppercase text-white/90">29th Jan 2026 • 09:00 AM</span>
         </motion.div>
 
-        <h1 ref={logoRef} className="font-heading font-black text-6xl md:text-8xl lg:text-9xl tracking-tighter mb-6 relative z-10 drop-shadow-2xl">
-          INNOBIZ <span className="text-yellow-400 inline-block">2K26</span>
-        </h1>
+        <div className="w-full flex flex-col items-center justify-center">
+          <h1 ref={logoRef} className="font-heading font-black text-5xl md:text-7xl lg:text-8xl tracking-tighter mb-0 relative z-10 drop-shadow-2xl flex items-center justify-center">
+            <img src="/favicon.svg" alt="InnoBiz 2K26" className="w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 mx-auto" />
+            <span className="sr-only">InnoBiz 2K26</span>
+          </h1>
 
-        <p ref={subtitleRef} className="text-xl md:text-3xl text-orange-100 font-medium mb-12 max-w-3xl mx-auto leading-relaxed drop-shadow-md">
-          Engineering Ideas. <span className="bg-white text-orange-600 px-2 py-0.5 rounded transform -skew-x-12 inline-block font-bold">Empowering Business.</span>
-        </p>
+          <p ref={subtitleRef} className="text-lg md:text-2xl text-orange-100 font-medium max-w-2xl mx-auto leading-relaxed drop-shadow-md mb-0 mt-2">
+            Engineering Ideas. <span className="bg-white text-orange-600 px-2 py-0.5 rounded transform -skew-x-12 inline-block font-bold">Empowering Business.</span>
+          </p>
+        </div>
 
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1, duration: 0.5 }}
-          className="flex flex-col md:flex-row gap-6 justify-center items-center"
+          className="flex flex-col md:flex-row gap-4 md:gap-6 justify-center items-center mt-4"
         >
           <button 
-            className="group relative px-10 py-5 bg-white text-orange-600 rounded-2xl font-black tracking-widest uppercase overflow-hidden hover:scale-105 transition-all shadow-2xl shadow-orange-900/40"
+            className="group relative px-8 md:px-10 py-4 md:py-5 bg-white text-orange-600 rounded-2xl font-black tracking-widest uppercase overflow-hidden hover:scale-105 transition-all shadow-2xl shadow-orange-900/40"
             data-hover="true"
             onClick={() => window.open('https://forms.google.com', '_blank')}
           >
@@ -81,7 +84,7 @@ const Hero: React.FC = () => {
           </button>
 
           <button 
-            className="px-10 py-5 bg-orange-700/40 backdrop-blur-sm border border-white/30 text-white rounded-2xl font-bold tracking-widest uppercase hover:bg-orange-700/60 transition-colors"
+            className="px-8 md:px-10 py-4 md:py-5 bg-orange-700/40 backdrop-blur-sm border border-white/30 text-white rounded-2xl font-bold tracking-widest uppercase hover:bg-orange-700/60 transition-colors"
             data-hover="true"
             onClick={() => document.getElementById('events')?.scrollIntoView({ behavior: 'smooth'})}
           >
@@ -89,14 +92,6 @@ const Hero: React.FC = () => {
           </button>
         </motion.div>
       </div>
-
-      <motion.div 
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/50"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-      >
-        <ChevronDown className="w-8 h-8" />
-      </motion.div>
     </section>
   );
 };
