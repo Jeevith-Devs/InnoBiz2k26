@@ -27,7 +27,7 @@ const Hero: React.FC = () => {
   }, []);
 
   return (
-    <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center text-center px-4 overflow-hidden pt-20 bg-gradient-to-br from-orange-500 via-orange-600 to-amber-700 text-white">
+    <section id="hero" className="relative h-screen flex flex-col items-center justify-center text-center px-4 overflow-hidden pt-20 bg-gradient-to-br from-orange-500 via-orange-600 to-amber-700 text-white">
       
       {/* Abstract Background Shapes */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -49,48 +49,54 @@ const Hero: React.FC = () => {
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.8 }}
-          className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md px-6 py-2 rounded-full border border-white/20 shadow-lg mt-2"
+          className="w-full flex justify-center mt-2"
         >
-          <span className="w-2.5 h-2.5 rounded-full bg-yellow-400 animate-pulse shadow-[0_0_10px_#facc15]" />
-          <span className="text-sm md:text-base font-bold tracking-widest uppercase text-white/90">29th Jan 2026 • 09:00 AM</span>
+          <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md px-6 py-2 rounded-full border border-white/20 shadow-lg max-w-[40rem] w-full justify-center">
+            <span className="w-2.5 h-2.5 rounded-full bg-yellow-400 animate-pulse shadow-[0_0_10px_#facc15]" />
+            <span className="text-sm md:text-base font-bold tracking-widest uppercase text-white/90">29th Jan 2026 • 09:00 AM</span>
+          </div>
         </motion.div>
 
         <div className="w-full flex flex-col items-center justify-center">
-          <h1 ref={logoRef} className="font-heading font-black text-5xl md:text-7xl lg:text-8xl tracking-tighter mb-0 relative z-10 drop-shadow-2xl flex items-center justify-center">
-            <img src="/favicon.svg" alt="InnoBiz 2K26" className="w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 mx-auto" />
-            <span className="sr-only">InnoBiz 2K26</span>
-          </h1>
+          <div className="flex flex-col items-center w-full max-w-[40rem]">
+            <h1 ref={logoRef} className="font-heading font-black text-5xl md:text-7xl lg:text-8xl tracking-tighter mb-0 relative z-10 drop-shadow-2xl flex items-center justify-center">
+              <img src="/logo.png" alt="InnoBiz 2K26" className="block w-56 sm:w-72 md:w-80 lg:w-96 h-auto mx-auto" />
+              <span className="sr-only">InnoBiz 2K26</span>
+            </h1>
 
-          <p ref={subtitleRef} className="text-lg md:text-2xl text-orange-100 font-medium max-w-2xl mx-auto leading-relaxed drop-shadow-md mb-0 mt-2">
-            Engineering Ideas. <span className="bg-white text-orange-600 px-2 py-0.5 rounded transform -skew-x-12 inline-block font-bold">Empowering Business.</span>
-          </p>
+            <p ref={subtitleRef} className="text-lg md:text-2xl text-orange-100 font-medium max-w-[36rem] mx-auto leading-relaxed drop-shadow-md mb-0 mt-4 text-center">
+              Engineering Ideas. <span className="bg-white text-orange-600 px-2 py-0.5 rounded transform -skew-x-12 inline-block font-bold">Empowering Business.</span>
+            </p>
+          </div>
+
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1, duration: 0.5 }}
+            className="w-full flex justify-center mt-6"
+          >
+            <div className="w-full max-w-[40rem] flex flex-row flex-wrap gap-4 md:gap-6 justify-center items-center">
+              <button 
+                className="w-auto group relative px-8 md:px-10 py-4 md:py-5 bg-white text-orange-600 rounded-2xl font-black tracking-widest uppercase overflow-hidden hover:scale-105 transition-all shadow-2xl shadow-orange-900/40"
+                data-hover="true"
+                onClick={() => window.open('https://forms.google.com', '_blank')}
+              >
+                <span className="relative z-10 flex items-center gap-2 justify-center">
+                  Register Now <Zap className="w-5 h-5 fill-current" />
+                </span>
+                <div className="absolute inset-0 bg-yellow-50 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
+              </button>
+
+              <button 
+                className="w-auto px-8 md:px-10 py-4 md:py-5 bg-orange-700/40 backdrop-blur-sm border border-white/30 text-white rounded-2xl font-bold tracking-widest uppercase hover:bg-orange-700/60 transition-colors"
+                data-hover="true"
+                onClick={() => document.getElementById('events')?.scrollIntoView({ behavior: 'smooth'})}
+              >
+                Explore Events
+              </button>
+            </div>
+          </motion.div>
         </div>
-
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1, duration: 0.5 }}
-          className="flex flex-col md:flex-row gap-4 md:gap-6 justify-center items-center mt-4"
-        >
-          <button 
-            className="group relative px-8 md:px-10 py-4 md:py-5 bg-white text-orange-600 rounded-2xl font-black tracking-widest uppercase overflow-hidden hover:scale-105 transition-all shadow-2xl shadow-orange-900/40"
-            data-hover="true"
-            onClick={() => window.open('https://forms.google.com', '_blank')}
-          >
-            <span className="relative z-10 flex items-center gap-2">
-              Register Now <Zap className="w-5 h-5 fill-current" />
-            </span>
-            <div className="absolute inset-0 bg-yellow-50 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
-          </button>
-
-          <button 
-            className="px-8 md:px-10 py-4 md:py-5 bg-orange-700/40 backdrop-blur-sm border border-white/30 text-white rounded-2xl font-bold tracking-widest uppercase hover:bg-orange-700/60 transition-colors"
-            data-hover="true"
-            onClick={() => document.getElementById('events')?.scrollIntoView({ behavior: 'smooth'})}
-          >
-            Explore Events
-          </button>
-        </motion.div>
       </div>
     </section>
   );
