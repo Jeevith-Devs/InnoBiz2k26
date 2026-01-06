@@ -25,6 +25,13 @@ const App: React.FC = () => {
     <div className="relative min-h-screen selection:bg-orange-500 selection:text-white cursor-auto md:cursor-none bg-[#fff7ed]">
       <CustomCursor />
       <Navbar />
+      {/* Background audio player (uses public/sandhanam.mp3) */}
+      <React.Suspense fallback={null}>
+        {/* Lazy import to reduce initial bundle size */}
+        {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+        {/* @ts-ignore */}
+        {React.createElement(React.lazy(() => import('./components/BackgroundAudioMinimal')))}
+      </React.Suspense>
       <main>
         <Hero />
         <About />
