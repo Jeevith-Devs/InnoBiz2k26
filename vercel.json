@@ -1,7 +1,7 @@
 {
   "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/((?!assets|sandhanam\\.mp3|favicon|.*\\.(mp3|svg|png|jpg|jpeg|gif|ico|css|js|json|woff|woff2|ttf|eot)).*)",
       "destination": "/index.html"
     }
   ],

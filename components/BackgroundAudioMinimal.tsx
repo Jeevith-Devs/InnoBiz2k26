@@ -10,10 +10,17 @@ const BackgroundAudioMinimal: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
 
-  // Use BASE_URL for proper path resolution in Vercel
-  // Fallback to absolute path if BASE_URL is not available
-  const baseUrl = (import.meta as any).env?.BASE_URL || '/';
-  const audioSrc = `${baseUrl}sandhanam.mp3`.replace(/\/\//g, '/');
+  // Use absolute path for Vercel deployment
+  // Try multiple path resolutions to ensure it works
+  const getAudioSrc = () => {
+    // Try BASE_URL first (for subdirectory deployments)
+    const baseUrl = (import.meta as any).env?.BASE_URL || '';
+    // Ensure we have a leading slash
+    const path = baseUrl.endsWith('/') ? `${baseUrl}sandhanam.mp3` : `${baseUrl}/sandhanam.mp3`;
+    return path.replace(/\/\//g, '/');
+  };
+  
+  const audioSrc = getAudioSrc();
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -27,14 +34,33 @@ const BackgroundAudioMinimal: React.FC = () => {
     audio.volume = 0.45;
     audio.preload = 'auto';
 
-    // Add error handler to log loading issues
-    const handleError = (e: Event) => {
+    // Try alternative paths if the main one fails
+    const alternativePaths = [
+      audioSrc,
+      '/sandhanam.mp3',
+      './sandhanam.mp3',
+      `${window.location.origin}/sandhanam.mp3`
+    ];
+    let currentPathIndex = 0;
+
+    // Add error handler to log loading issues and try alternatives
+    const handleError = async (e: Event) => {
       console.error('BackgroundAudioMinimal: audio error', {
         error: e,
-        src: audioSrc,
+        src: audio.src,
         readyState: audio.readyState,
         networkState: audio.networkState
       });
+
+      // Try next alternative path
+      currentPathIndex++;
+      if (currentPathIndex < alternativePaths.length) {
+        console.log(`Trying alternative path: ${alternativePaths[currentPathIndex]}`);
+        audio.src = alternativePaths[currentPathIndex];
+        audio.load();
+      } else {
+        console.error('BackgroundAudioMinimal: All audio paths failed');
+      }
     };
     audio.addEventListener('error', handleError);
 
@@ -81,11 +107,27 @@ const BackgroundAudioMinimal: React.FC = () => {
       }
     };
 
-    // Start loading immediately
-    audio.load();
+    // Verify file exists before attempting to play
+    const verifyAndPlay = async () => {
+      // Try to verify the file exists with a HEAD request
+      try {
+        const response = await fetch(audioSrc, { method: 'HEAD' });
+        if (!response.ok) {
+          console.warn(`BackgroundAudioMinimal: File not found at ${audioSrc}, trying alternatives...`);
+          // Try first alternative
+          if (alternativePaths.length > 1) {
+            audio.src = alternativePaths[1];
+            audio.load();
+          }
+        }
+      } catch (err) {
+        console.warn('BackgroundAudioMinimal: File verification failed, proceeding anyway', err);
+      }
 
-    // Try to autoplay: audible first, then muted fallback
-    (async () => {
+      // Start loading immediately
+      audio.load();
+
+      // Try to autoplay: audible first, then muted fallback
       const audibleOk = await tryPlay(false);
       if (audibleOk) return;
       
@@ -106,7 +148,9 @@ const BackgroundAudioMinimal: React.FC = () => {
         return;
       }
       console.error('BackgroundAudioMinimal: unable to autoplay (audible or muted).');
-    })();
+    };
+
+    verifyAndPlay();
 
     return () => {
       audio.removeEventListener('error', handleError);
