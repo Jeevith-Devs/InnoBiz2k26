@@ -17,10 +17,31 @@ const BackgroundAudioMinimal: React.FC = () => {
     // Configure audio for looping
     audio.loop = true;
     audio.volume = 0.45;
+    audio.preload = 'auto';
 
     const tryPlay = async (muted: boolean): Promise<boolean> => {
       audio.muted = muted;
       try {
+        // Wait for audio to be ready before playing
+        if (audio.readyState < 2) {
+          await new Promise<void>((resolve, reject) => {
+            const onCanPlay = () => {
+              audio.removeEventListener('canplay', onCanPlay);
+              audio.removeEventListener('error', onError);
+              resolve();
+            };
+            const onError = () => {
+              audio.removeEventListener('canplay', onCanPlay);
+              audio.removeEventListener('error', onError);
+              reject(new Error('Audio load failed'));
+            };
+            audio.addEventListener('canplay', onCanPlay);
+            audio.addEventListener('error', onError);
+            // Start loading if not already
+            audio.load();
+          });
+        }
+        
         await audio.play();
         setIsMuted(muted);
         setIsPlaying(true);
@@ -31,6 +52,9 @@ const BackgroundAudioMinimal: React.FC = () => {
         return false;
       }
     };
+
+    // Start loading immediately
+    audio.load();
 
     // Try to autoplay: audible first, then muted fallback
     (async () => {
@@ -45,19 +69,16 @@ const BackgroundAudioMinimal: React.FC = () => {
           if (unmutedOk) {
             window.removeEventListener('click', onInteraction, true);
             window.removeEventListener('keydown', onInteraction, true);
+            window.removeEventListener('touchstart', onInteraction, true);
           }
         };
         window.addEventListener('click', onInteraction, true);
         window.addEventListener('keydown', onInteraction, true);
+        window.addEventListener('touchstart', onInteraction, true);
         return;
       }
       console.error('BackgroundAudioMinimal: unable to autoplay (audible or muted).');
     })();
-
-    // Quick check for 404s
-    fetch('/sandhanam.mp3', { method: 'HEAD' }).then(res => {
-      if (!res.ok) console.warn('BackgroundAudioMinimal: sandhanam.mp3 not found (HTTP ' + res.status + ')');
-    }).catch(() => console.warn('BackgroundAudioMinimal: HEAD check failed'));
 
     return () => {
       audio.pause();
