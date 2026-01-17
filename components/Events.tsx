@@ -18,7 +18,7 @@ const EVENTS: Event[] = [
     rules: ['Individual participation', 'Languages: C++, Java, Python', 'Time limit: 2 hours', 'Plagiarism checks enabled'],
     teamSize: '2-3',
     // Google Form link for Code Arena
-    formLink: 'https://forms.gle/oFV8sW52Yud3XDX36',
+    formLink: 'https://forms.gle/LxBTcFxRV7dr16Pu8',
     prizes: {
       first: '₹3000',
       second: '₹2000',
@@ -34,7 +34,7 @@ const EVENTS: Event[] = [
     rules: ['Team of 2 max', 'Frameworks allowed: React, Vue, HTML/CSS', 'Responsive design required', 'Submission via GitHub'],
     teamSize: '2-3',
     // Google Form link for Clone It
-    formLink: 'https://forms.gle/E984DKzW3itJTVdp6',
+    formLink: 'https://forms.gle/yQ3D88vJwwTmsWTJ8',
     prizes: {
       first: '₹3000',
       second: '₹2000',
@@ -50,7 +50,7 @@ const EVENTS: Event[] = [
     rules: ['Team of 2', '3 Rounds: Quiz, Connection, Rapid Fire', 'No electronic gadgets', 'Decision of judges is final'],
     teamSize: '2',
     // Google Form link for Brain Wave
-    formLink: 'https://forms.gle/zqj7izv3XAQgtUgHA',
+    formLink: 'https://forms.gle/hP6vptvwawEL7gjn9',
     prizes: {
       first: '₹2000',
       second: '₹1000',
@@ -66,7 +66,7 @@ const EVENTS: Event[] = [
     rules: ['Team of 2-3', 'Visual rounds only', 'Buzzer round included', 'Tie-breaker if needed'],
     teamSize: '2',
     // Google Form link for Reel Riddle
-    formLink: 'https://forms.gle/GF3Hy7VsxWEaKgue9',
+    formLink: 'https://forms.gle/pEKBwXXDRXmtHRNC6',
     prizes: {
       first: '₹2000',
       second: '₹1000',
