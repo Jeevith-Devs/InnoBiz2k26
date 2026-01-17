@@ -47,7 +47,7 @@ const Navbar: React.FC = () => {
           <button 
             className="bg-gradient-to-r from-orange-600 to-amber-500 text-white px-6 py-2.5 rounded-full text-sm font-bold uppercase tracking-wide hover:shadow-lg hover:shadow-orange-500/30 transition-all transform hover:scale-105"
             data-hover="true"
-            onClick={() => window.open('https://forms.google.com', '_blank')}
+            onClick={() => scrollTo('#events')}
           >
             Register
           </button>
@@ -83,7 +83,7 @@ const Navbar: React.FC = () => {
               ))}
               <button 
                  className="mt-4 bg-gradient-to-r from-orange-600 to-amber-500 text-white py-3 rounded-xl font-bold uppercase tracking-widest"
-                 onClick={() => window.open('https://forms.google.com', '_blank')}
+                 onClick={() => scrollTo('#events')}
               >
                 Register Now
               </button>

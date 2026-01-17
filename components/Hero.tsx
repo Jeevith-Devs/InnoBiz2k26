@@ -80,7 +80,7 @@ const Hero: React.FC = () => {
               <button 
                 className="w-auto group relative px-8 md:px-10 py-4 md:py-5 bg-white text-orange-600 rounded-2xl font-black tracking-widest uppercase overflow-hidden hover:scale-105 transition-all shadow-2xl shadow-orange-900/40"
                 data-hover="true"
-                onClick={() => window.open('https://forms.google.com', '_blank')}
+                onClick={() => document.getElementById('events')?.scrollIntoView({ behavior: 'smooth'})}
               >
                 <span className="relative z-10 flex items-center gap-2 justify-center">
                   Register Now <Zap className="w-5 h-5 fill-current" />
