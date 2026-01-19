@@ -5,7 +5,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Trophy, Users, FileText, Award, Medal } from 'lucide-react';
+import { X, Trophy, Users, FileText, Award, Medal, Download } from 'lucide-react';
 import { Event } from '../types';
 
 const EVENTS: Event[] = [
@@ -19,6 +19,8 @@ const EVENTS: Event[] = [
     teamSize: '2-3',
     // Google Form link for Code Arena
     formLink: 'https://forms.gle/LxBTcFxRV7dr16Pu8',
+    // PDF rules file path
+    rulesFile: '/rules/code-arena-rules.pdf',
     prizes: {
       first: '₹3000',
       second: '₹2000',
@@ -35,6 +37,8 @@ const EVENTS: Event[] = [
     teamSize: '2-3',
     // Google Form link for Clone It
     formLink: 'https://forms.gle/yQ3D88vJwwTmsWTJ8',
+    // PDF rules file path
+    rulesFile: '/rules/clone-it-rules.pdf',
     prizes: {
       first: '₹3000',
       second: '₹2000',
@@ -51,6 +55,8 @@ const EVENTS: Event[] = [
     teamSize: '2',
     // Google Form link for Brain Wave
     formLink: 'https://forms.gle/hP6vptvwawEL7gjn9',
+    // PDF rules file path
+    rulesFile: '/rules/brain-wave-rules.pdf',
     prizes: {
       first: '₹2000',
       second: '₹1000',
@@ -67,6 +73,8 @@ const EVENTS: Event[] = [
     teamSize: '2',
     // Google Form link for Reel Riddle
     formLink: 'https://forms.gle/pEKBwXXDRXmtHRNC6',
+    // PDF rules file path
+    rulesFile: '/rules/reel-riddle-rules.pdf',
     prizes: {
       first: '₹2000',
       second: '₹1000',
@@ -89,6 +97,18 @@ const Events: React.FC = () => {
       document.body.style.overflow = 'unset';
     };
   }, [selectedEvent]);
+
+  // Function to handle PDF download
+  const handleDownloadRules = (event: Event) => {
+    if (event.rulesFile) {
+      const link = document.createElement('a');
+      link.href = event.rulesFile;
+      link.download = `${event.name.toLowerCase().replace(/\s+/g, '-')}-rules.pdf`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  };
 
   return (
     <section id="events" className="py-24 bg-gray-50">
@@ -228,12 +248,24 @@ const Events: React.FC = () => {
                     </ul>
                   </div>
 
-                  <button 
-                    onClick={() => selectedEvent?.formLink && window.open(selectedEvent.formLink, '_blank')}
-                    className="w-full bg-gradient-to-r from-orange-600 to-yellow-500 text-white py-4 rounded-xl font-bold uppercase tracking-widest hover:shadow-lg hover:shadow-orange-500/30 transition-all transform hover:scale-[1.02]"
-                  >
-                    Register For {selectedEvent.name}
-                  </button>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <button
+                      onClick={() => selectedEvent?.formLink && window.open(selectedEvent.formLink, '_blank')}
+                      className="w-full bg-gradient-to-r from-orange-600 to-yellow-500 text-white py-4 rounded-xl font-bold uppercase tracking-widest hover:shadow-lg hover:shadow-orange-500/30 transition-all transform hover:scale-[1.02]"
+                    >
+                      Register Now
+                    </button>
+
+                    {selectedEvent.rulesFile && (
+                      <button
+                        onClick={() => handleDownloadRules(selectedEvent)}
+                        className="w-full bg-gradient-to-r from-gray-700 to-gray-900 text-white py-4 rounded-xl font-bold uppercase tracking-widest hover:shadow-lg hover:shadow-gray-500/30 transition-all transform hover:scale-[1.02] flex items-center justify-center gap-2"
+                      >
+                        <Download className="w-5 h-5" />
+                        Download Rules
+                      </button>
+                    )}
+                  </div>
                 </div>
               </motion.div>
             </div>

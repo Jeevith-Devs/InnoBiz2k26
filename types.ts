@@ -13,6 +13,8 @@ export interface Event {
   teamSize: string;
   // Optional Google Form link for registration
   formLink?: string;
+  // Optional PDF file path for rules download
+  rulesFile?: string;
   prizes: {
     first: string;
     second: string;
