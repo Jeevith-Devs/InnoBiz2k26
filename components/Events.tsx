@@ -15,7 +15,7 @@ const EVENTS: Event[] = [
     category: 'Technical',
     description: 'A competitive coding battle where optimization meets speed. Solve complex algorithmic problems against the clock.',
     image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1000&auto=format&fit=crop',
-    rules: ['Individual participation', 'Languages: C++, Java, Python', 'Time limit: 2 hours', 'Plagiarism checks enabled'],
+    rules: ['Team (2-3) Members', 'Language: Specified within platform', 'Plagiarism checks enabled'],
     teamSize: '2-3',
     // Google Form link for Code Arena
     formLink: 'https://forms.gle/LxBTcFxRV7dr16Pu8',
