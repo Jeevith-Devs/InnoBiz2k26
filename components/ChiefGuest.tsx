@@ -12,8 +12,8 @@ const ChiefGuest: React.FC = () => {
     <section className="py-24 bg-white">
       <div className="max-w-4xl mx-auto px-6 text-center">
         <h2 className="font-heading text-4xl font-bold mb-16">Guest of <span className="text-orange-600">Honor</span></h2>
-        
-        <motion.div 
+
+        <motion.div
           className="relative max-w-md mx-auto aspect-[3/4] rounded-2xl bg-gray-100 flex items-center justify-center border-2 border-dashed border-gray-300 overflow-hidden"
           animate={{ borderColor: ['#e5e7eb', '#f97316', '#e5e7eb'] }}
           transition={{ duration: 3, repeat: Infinity }}
@@ -33,6 +33,22 @@ const ChiefGuest: React.FC = () => {
 
 
         </motion.div>
+
+        {/* Guest Information */}
+        <div className="mt-8 space-y-2">
+          <h3 className="font-heading text-2xl font-bold text-gray-900">
+            Sasikumar Thangamuthu
+          </h3>
+          <p className="text-orange-600 font-semibold text-lg">
+            Chief People Officer
+          </p>
+          <p className="text-gray-600 font-medium">
+            Grootan Technologies
+          </p>
+          <p className="text-gray-500 text-sm">
+            Full-time · 7 yrs 5 mos
+          </p>
+        </div>
       </div>
     </section>
   );
