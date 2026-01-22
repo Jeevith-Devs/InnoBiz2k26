@@ -18,7 +18,7 @@ const EVENTS: Event[] = [
     rules: ['Team (2-3) Members', 'Language: Specified within platform', 'Plagiarism checks enabled'],
     teamSize: '2-3',
     // Google Form link for Code Arena
-    formLink: 'https://forms.gle/LxBTcFxRV7dr16Pu8',
+    formLink: 'https://forms.gle/fWJ1E4NcuRmtGzWF8',
     // PDF rules file path
     rulesFile: '/rules/code-arena-rules.pdf',
     prizes: {
@@ -36,7 +36,7 @@ const EVENTS: Event[] = [
     rules: ['Team of 2 max', 'Frameworks allowed: React, Vue, HTML/CSS', 'Responsive design required', 'Submission via GitHub'],
     teamSize: '2-3',
     // Google Form link for Clone It
-    formLink: 'https://forms.gle/yQ3D88vJwwTmsWTJ8',
+    formLink: 'https://forms.gle/fWJ1E4NcuRmtGzWF8',
     // PDF rules file path
     rulesFile: '/rules/clone-it-rules.pdf',
     prizes: {
@@ -54,7 +54,7 @@ const EVENTS: Event[] = [
     rules: ['Team of 2', '3 Rounds: Quiz, Connection, Rapid Fire', 'No electronic gadgets', 'Decision of judges is final'],
     teamSize: '2',
     // Google Form link for Brain Wave
-    formLink: 'https://forms.gle/hP6vptvwawEL7gjn9',
+    formLink: 'https://forms.gle/3KobZ1pJphjkwMqV9',
     // PDF rules file path
     rulesFile: '/rules/brain-wave-rules.pdf',
     prizes: {
@@ -72,7 +72,7 @@ const EVENTS: Event[] = [
     rules: ['Team of 2-3', 'Visual rounds only', 'Buzzer round included', 'Tie-breaker if needed'],
     teamSize: '2',
     // Google Form link for Reel Riddle
-    formLink: 'https://forms.gle/pEKBwXXDRXmtHRNC6',
+    formLink: 'https://forms.gle/3KobZ1pJphjkwMqV9',
     // PDF rules file path
     rulesFile: '/rules/reel-riddle-rules.pdf',
     prizes: {
