@@ -49,7 +49,7 @@ const EVENTS: Event[] = [
     id: 'nontech1',
     name: 'Brain Wave',
     category: 'Non-Technical',
-    description: 'A test of wits, logic, and general knowledge. From business trivia to lateral thinking puzzles.',
+    description: 'A fun loaded game full of jokes, tricky twists, and hilarious moments, creative thinking. No stress only laughs',
     image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     rules: ['Team of 2', '3 Rounds: Quiz, Connection, Rapid Fire', 'No electronic gadgets', 'Decision of judges is final'],
     teamSize: '2',
