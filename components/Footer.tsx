@@ -111,7 +111,7 @@ const Footer: React.FC = () => {
               src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15538.289090378987!2d80.106764!3d13.189347!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5289d88af459f3%3A0xa73242f57fb44db9!2sVel%20Tech%20Multi%20Tech%20Dr.Rangarajan%20Dr.Sakunthala%20Engineering%20College(Autonomous)!5e0!3m2!1sen!2sin!4v1739545875570!5m2!1sen!2sin"
               width="600"
               height="450"
-              style={{border: 0}}
+              style={{ border: 0 }}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
@@ -129,9 +129,19 @@ const Footer: React.FC = () => {
           </a>
         </div>
       </div>
-      <div className="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-white/10 text-center text-gray-600 text-sm">
-        <p>&copy; 2026 InnoBiz Symposium. All rights reserved.</p>
-        <p className="mt-1">Designed by VTMT CSBS Dept.</p>
+      <div className="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-white/10 text-center text-gray-600 text-sm relative z-50">
+        <p>
+          &copy; 2026 InnoBiz Symposium. All rights reserved to{" "}
+          <button
+            type="button"
+            onClick={() => window.open("https://www.instagram.com/ft._.thunderjoe._", "_blank")}
+            className="text-orange-500 hover:text-orange-400 font-semibold transition-colors cursor-pointer inline border-0 bg-transparent p-0 underline relative z-50"
+            style={{ pointerEvents: 'auto' }}
+          >
+            Jeevith Thunderjoe
+          </button>
+          .
+        </p>
       </div>
     </footer>
   );
