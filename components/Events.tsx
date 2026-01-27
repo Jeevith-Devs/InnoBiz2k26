@@ -33,7 +33,7 @@ const EVENTS: Event[] = [
     category: 'Technical',
     description: 'Replicate a given UI design with pixel-perfect accuracy using modern frontend technologies.',
     image: 'https://images.unsplash.com/photo-1519222970733-f546218fa6d7?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    rules: ['Team of 2 max', 'Frameworks allowed: React, Vue, HTML/CSS', 'Responsive design required', 'Submission via GitHub'],
+    rules: ['Team of 3 max', 'Frameworks allowed: React, Vue, HTML/CSS', 'Responsive design required', 'Submission via GitHub'],
     teamSize: '2-3',
     // Google Form link for Clone It
     formLink: 'https://forms.gle/fWJ1E4NcuRmtGzWF8',
